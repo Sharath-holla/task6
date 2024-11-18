@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Flow - Enhance Your Online Visibility</title>
+   <style>
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f7f7f7;
+    color: #333;
+    line-height: 1.6;
+}
+
+nav {
+    background-color: rgb(161, 108, 213);
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+nav:hover {
+    background-color: #3f51b5;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 20px;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #ff4081;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: rgb(238, 144, 180);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+nav ul li a:hover::after {
+    transform: scaleX(1);
+}
+
+header {
+    background-color: lightpink;
+    color: #fff;
+    padding: 80px 20px;
+    text-align: center;
+    position: relative;
+}
+
+header h1 {
+    font-size: 48px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    animation: fadeInUp 1s ease-out;
+}
+
+header p {
+    font-size: 22px;
+    margin-bottom: 20px;
+    animation: fadeInUp 1.2s ease-out;
+}
+
+header .rating {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+header .rating img {
+    width: 50px;
+    border-radius: 50%;
+    margin-right: 15px;
+    animation: bounce 1.5s ease infinite;
+}
+
+header .contact-button {
+    padding: 15px 30px;
+    background-color: #283593;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 50px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+header .contact-button:hover {
+    background-color: #3f51b5;
+    transform: scale(1.1);
+}
+
+.trusted {
+    background-color: #fff;
+    padding: 60px 20px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.trusted h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #283593;
+}
+
+.trusted p {
+    font-size: 20px;
+    margin-bottom: 30px;
+    color: #555;
+}
+
+.industries {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.industries span {
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: #283593;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.industries span:hover {
+    transform: translateY(-10px);
+    color: #ff40a6;
+}
+
+.why-choose-us {
+    background-color: #f4f4f4;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.why-choose-us h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #283593;
+}
+
+.why-choose-us ul {
+    list-style: none;
+    font-size: 20px;
+    line-height: 1.8;
+    color: #555;
+}
+
+.why-choose-us ul li {
+    margin-bottom: 15px;
+}
+
+
+.products {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.product-card {
+    position: relative;
+    display: inline-block;
+    width: 80%;
+    max-width: 800px;
+    overflow: hidden;
+}
+
+.product-card img {
+    width: 80%;
+    height: auto;
+    display: none;
+    transition: opacity 0.9s ease-in-out;
+}
+
+.product-card img:first-child {
+    display: block;
+}
+
+
+#prev-slide,
+#next-slide {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 16px;
+    z-index: 10;
+}
+
+#prev-slide {
+    left: 10px;
+}
+
+#next-slide {
+    right: 10px;
+}
+
+#prev-slide:hover,
+#next-slide:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+
+.product-card {
+    position: relative;
+}
+
+.product-card img {
+    display: none;
+}
+
+.product-card img.active {
+    display: block;
+}
+
+
+.packages {
+    background-color: #f4f4f4;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.packages h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #283593;
+}
+
+.packages ul {
+    list-style: none;
+    font-size: 20px;
+    color: #555;
+}
+
+.packages ul li {
+    margin-bottom: 15px;
+}
+
+.ready-products {
+    background-color: #fff;
+    padding: 60px 20px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.ready-products h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #283593;
+}
+
+.ready-products ul {
+    list-style: none;
+    font-size: 20px;
+    color: #555;
+}
+
+.ready-products ul li {
+    margin-bottom: 15px;
+}
+
+.additional-services {
+    background-color: #f4f4f4;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.additional-services h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #283593;
+}
+
+.additional-services ul {
+    list-style: none;
+    font-size: 20px;
+    color: #555;
+}
+
+.additional-services ul li {
+    margin-bottom: 15px;
+}
+
+.client-feedback {
+    background-color: #fff;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.faq {
+    margin: 20px 0;
+}
+
+.faq ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.faq li {
+    margin-bottom: 10px;
+}
+
+.faq li .answer {
+    display: none;
+    margin-top: 5px;
+    color: #555;
+}
+
+.faq li span.toggle-btn {
+    cursor: pointer;
+    color: #FF6347;
+    font-weight: bold;
+}
+
+.faq li span.toggle-btn:hover {
+    text-decoration: underline;
+}
+
+
+footer {
+    background-color: #283593;
+    color: #fff;
+    padding: 60px 20px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+}
+
+footer h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+footer .contact-button {
+    padding: 15px 30px;
+    background-color: #ff406d;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 50px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+footer .contact-button:hover {
+    background-color: #283593;
+    transform: scale(1.1);
+}
+
+footer h3 {
+    font-size: 20px;
+    margin: 20px 0;
+}
+
+footer input {
+    padding: 15px;
+    font-size: 18px;
+    margin-right: 10px;
+    border-radius: 5px;
+    border: 2px solid #ccc;
+    transition: border-color 0.3s ease;
+}
+
+footer input:focus {
+    border-color: #ff4081;
+}
+
+footer button {
+    padding: 15px 30px;
+    background-color: #ff4081;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 50px;
+    transition: background-color 0.3s ease;
+}
+
+footer button:hover {
+    background-color: #283593;
+}
+
+footer .footer-links {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+footer .footer-links div {
+    text-align: left;
+}
+
+footer .footer-links h4 {
+    font-size: 22px;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+footer .footer-links p {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+footer .socials {
+    margin-top: 20px;
+}
+
+footer .socials span {
+    margin-right: 20px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #fff;
+    transition: color 0.3s ease;
+}
+
+footer .socials span:hover {
+    color: #ff4081;
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes bounce {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateY(0);
+    }
+
+    40% {
+        transform: translateY(-10px);
+    }
+
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+footer {
+    background-color: #283593;
+    color: #fff;
+    padding: 40px 20px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+}
+
+footer p {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+footer .socials {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+footer .socials a {
+    color: #fff;
+    font-size: 18px;
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+footer .socials a:hover {
+    color: #ff80ab;
+    transform: translateY(-5px);
+}
+
+footer .socials a:active {
+    transform: translateY(0);
+}
+
+
+footer p,
+footer .socials {
+    animation: fadeInUp 1s ease-out;
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+   </style>
+</head>
+
+<body>
+
+    <nav>
+        <div><img src="https://www.mainflow.in/images/Main-Flow.png" alt=""></div>
+        <ul>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#internship">Internship</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+    <% if (!currentUser) { %>
+       <li><a href="/login">Login</a> | <a href="/register">Register</a></li>
+    <% } else { %>
+       <li><a href="/logout">Logout</a></li> 
+    <% } %>
+            
+        </ul>
+    </nav>
+
+    <header>
+        <h1>Use Main Flow to Enhance Online Visibility</h1>
+        <p>If you're tired of low-paying projects, lack of inquiries, and struggling with your business ideas, this is
+            for you!</p>
+        <div class="rating">
+            <span>[Rated 4.9 stars by 1000+ Customers like you]</span>
+        </div>
+        <button class="contact-button">Contact Us</button>
+    </header>
+
+    <section class="trusted">
+        <h2>Trusted by Growing Businesses</h2>
+        <p>Main Flow Services and Technologies has left its quality impression on every industry.</p>
+        <div class="industries">
+
+            <div class="industry-card">Education & E-Learning</div>
+            <div class="industry-card">E-Commerce</div>
+            <div class="industry-card">Social Networking</div>
+            <div class="industry-card">Healthcare</div>
+            <div class="industry-card">Entertainment & Media</div>
+            <div class="industry-card">Energy</div>
+            <div class="industry-card">Retail</div>
+            <div class="industry-card">Manufacturing</div>
+            <div class="industry-card">Real Estate</div>
+            <div class="industry-card">Logistics</div>
+            <div class="industry-card">Construction</div>
+            <div class="industry-card">Fashion & Clothing</div>
+            <div class="industry-card">Beauty</div>
+            <div class="industry-card">Restaurant & Food</div>
+            <div class="industry-card">Agriculture</div>
+        </div>
+    </section>
+
+    <section class="why-choose-us">
+        <h2>Why Choose Us?</h2>
+        <p>We are here to fulfill commitments. We don’t claim it; we have testimonials to prove it.</p>
+        <ul>
+            <li>Not a team, but a family of IT experts from diverse backgrounds and experiences.</li>
+            <li>Bespoke development as per your understanding to ensure satisfaction at every level.</li>
+            <li>Complete integration for both B2B and B2C projects in digital transformation.</li>
+            <li>Industries served: Banking, Retail, Real-Estate, Automobiles, Hospitality, and more.</li>
+        </ul>
+    </section>
+
+    <section class="products">
+        <h2>Products</h2>
+        <div class="product-card">
+            <button id="prev-slide">Previous</button>
+            <img src="https://fastercapital.co/i/Anytime-Access--Exploring-the-Benefits-of-Cloud-Based-CRM--Flexibility-and-Scalability-of-Cloud-Based-CRM.webp"
+                alt="Product Screenshot" class="slide">
+            <img src="https://media.istockphoto.com/id/1211151590/vector/internship-concept-vector-illustration-banner-with-keywords-and-icons.jpg?s=612x612&w=0&k=20&c=p-BgOKq8H9gtmA6GnpzLi3xJP7fHCtWVr_Fb0oaPHSI="
+                alt="Product Screenshot" class="slide">
+            <img src="https://media.licdn.com/dms/image/v2/D5622AQFMgnVPRwGcpw/feedshare-shrink_800/feedshare-shrink_800/0/1722507758677?e=2147483647&v=beta&t=gdcrjXkWMu2pd-cD1squ7tHXOHdDS3eXRxUz4pAQfnA"
+                alt="Product Screenshot" class="slide">
+            <img src="https://media.licdn.com/dms/image/v2/D5622AQFot-fwlSMZsA/feedshare-shrink_800/feedshare-shrink_800/0/1711987334324?e=2147483647&v=beta&t=oapCqWvWUx7qHCLpO3pP80uGo5Ky9nQBu9GQ5WWcSoQ"
+                alt="Product Screenshot" class="slide">
+            <button id="next-slide">Next</button>
+        </div>
+    </section>
+
+  <section class="packages">
+        <h2>Is It For Me?</h2>
+        <p>A shortcut to attracting the best business opportunities.</p>
+        <div class="package-card">
+            <h3>Complete Package for Aspiring Designers</h3>
+            <p>Ideal for designers & developers with knowledge aiming to start coding with the best tools.</p>
+        </div>
+        <div class="package-card">
+            <h3>Complete Package for Data Analysis of All Levels</h3>
+            <p>Perfect for data analysts, data scientists & machine learning enthusiasts seeking growth.</p>
+        </div>
+        <div class="package-card">
+            <h3>Complete Package for Developers of All Levels</h3>
+            <p>Access the best developer services to build your brand and online presence.</p>
+        </div>
+    </section>
+
+    <section class="ready-products">
+        <h2>Ready Products We Have</h2>
+        <div class="background-card">
+            <ul>
+                <li>Learning and Management System</li>
+                <li>School Management System</li>
+                <li>Hospital Management System</li>
+                <li>Business Management System</li>
+            </ul>
+            <p>Take advantage of our offer and start saving money today. We evaluate top products to ensure the best
+                value for your investment.</p>
+        </div>
+    </section>
+
+    <section class="additional-services">
+        <h2>What We Offer</h2>
+        <p>Imagination means little without action. Main Flow transforms visionary projects into reality.</p>
+        <div class="services-list">
+            <span>Web Development</span>
+            <span>Graphic Design</span>
+            <span>Mobile Development</span>
+            <span>E-Commerce Development</span>
+            <span>Digital Marketing</span>
+            <span>Cloud Services</span>
+            <span>Data Analytics</span>
+        </div>
+    </section>
+
+    <section class="client-feedback">
+        <h2>What Our Clients Say...</h2>
+        <div class="feedback-card">
+            <p>"Main Flow has transformed our business!" - Happy Client</p>
+
+        </div>
+    </section>
+
+    <section class="faq">
+        <h2>Frequently Asked Questions</h2>
+        <ul>
+            <li>
+                Q1. What services do you offer?
+                <span class="toggle-btn">Toggle</span>
+                <div class="answer">
+                    <p>We offer various services including web development, app development, and digital marketing.</p>
+                </div>
+            </li>
+            <li>
+                Q2. What industries do you specialize in?
+                <span class="toggle-btn">Toggle</span>
+                <div class="answer">
+                    <p>We specialize in industries like education, healthcare, e-commerce, and more.</p>
+                </div>
+            </li>
+            <li>
+                Q3. How do I get started with your services?
+                <span class="toggle-btn">Toggle</span>
+                <div class="answer">
+                    <p>You can contact us through the website or call our sales team to get started.</p>
+                </div>
+            </li>
+            <li>
+                Q4. What is included in your IT support services?
+                <span class="toggle-btn">Toggle</span>
+                <div class="answer">
+                    <p>Our IT support includes troubleshooting, network monitoring, and system maintenance.</p>
+                </div>
+            </li>
+            <li>
+                Q5. Do you offer 24/7 support?
+                <span class="toggle-btn">Toggle</span>
+                <div class="answer">
+                    <p>Yes, we offer 24/7 support to ensure that your business runs smoothly at all times.</p>
+                </div>
+            </li>
+            <li>
+                Q6. How can I contact you for support?
+                <span class="toggle-btn">Toggle</span>
+                <div class="answer">
+                    <p>You can reach us through email or call our customer support line for assistance.</p>
+                </div>
+            </li>
+        </ul>
+    </section>
+
+
+    <footer>
+        <h2>Elevate your Business now!</h2>
+        <button class="contact-button">Contact Us</button>
+        <h3>Sign up for our newsletter</h3>
+        <input type="email" placeholder="Your Email">
+        <button>Sign Up</button>
+        <div class="footer-links">
+            <div>
+                <h4>Main Flow</h4>
+                <p>Classes</p>
+                <p>Platform</p>
+                <p>Teaching</p>
+                <p>Support</p>
+                <p>Success Stories</p>
+            </div>
+            <div>
+                <h4>Company</h4>
+                <p>About Main Flow</p>
+                <p>Blog</p>
+                <p>Careers</p>
+                <p>Newsletter</p>
+                <p>Contact</p>
+            </div>
+            <div>
+                <h4>Legal</h4>
+                <p>Terms & Conditions</p>
+                <p>Privacy Policy</p>
+                <p>Cookies Policy</p>
+                <p>Disclaimer</p>
+            </div>
+        </div>
+        <p>© 2024 Main Flow Services & Technologies Pvt. Ltd., All rights reserved</p>
+        <div class="socials">
+            <a href="https://www.instagram.com" target="_blank">Instagram</a>
+            <a href="https://www.linkedin.com/company/main-flow-services-and-technologies/posts/?feedView=all"
+                target="_blank">LinkedIn</a>
+            <a href="https://twitter.com" target="_blank">Twitter</a>
+            <a href="https://www.youtube.com/@MainFlowTraining" target="_blank">YouTube</a>
+            <a href="https://github.com" target="_blank">GitHub</a>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+    const toggleButtons = document.querySelectorAll(".faq li span.toggle-btn");
+    toggleButtons.forEach(button => {
+        button.addEventListener("click", function () {
+            const answer = this.nextElementSibling;
+
+            if (answer.style.display === "block") {
+                answer.style.display = "none";
+                this.textContent = "Toggle";
+            } else {
+                answer.style.display = "block";
+                this.textContent = "Close";
+            }
+        });
+    });
+
+
+    let slideIndex = 0;
+    const slides = document.querySelectorAll(".product-card img");
+    const totalSlides = slides.length;
+
+    function showSlide(index) {
+
+        slides.forEach((slide, i) => {
+            slide.style.display = "none";
+        });
+
+
+        slides[index].style.display = "block";
+    }
+
+    function nextSlide() {
+        slideIndex = (slideIndex + 1) % totalSlides;
+        showSlide(slideIndex);
+    }
+
+    function prevSlide() {
+        slideIndex = (slideIndex - 1 + totalSlides) % totalSlides;
+        showSlide(slideIndex);
+    }
+
+    showSlide(slideIndex);
+    setInterval(nextSlide, 3000);
+    document.querySelector("#next-slide").addEventListener("click", nextSlide);
+    document.querySelector("#prev-slide").addEventListener("click", prevSlide);
+});
+</script>
+</body>
+
+</html>
