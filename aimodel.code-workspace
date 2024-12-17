@@ -1,0 +1,15 @@
+{
+	"folders": [
+		{
+			"name": "aimodel",
+			"path": "../aimodel"
+		},
+		{
+			"name": "farmershub",
+			"path": "../farmershub"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "hackathon1"
+	}
+}
